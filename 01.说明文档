@@ -1,0 +1,66 @@
+Step 0：准备工作
+将CIT压缩包解压，并放在Home文件夹下
+（这个完全可以用图形化的手段解决，鼠标点点就OK了）
+Step 1：编译动态库文件
+打开终端1（序号1,做个标记下面会用到，下同）
+
+cd到代码的主文件夹
+cd WalkEnv/utaustinvilla3d
+执行make clean命令，清除之前已经编译好的文件，准备重新编译
+make clean
+执行make命令，编译文件（最终会在WalkEnv/utaustinvilla3d/WE里面生成一个libwalktrain.so文件）
+make
+关闭终端1
+
+Step2：安装Python自编库WE和gym与RoboCup环境接口gym_walk
+打开终端2
+注意：如果你创建了虚拟的环境管理不同的python，请在Step2开始的时候激活虚拟环境！！！！
+
+cd到代码主文件夹
+cd WalkEnv/utaustinvilla3d/
+输入安装命令，安装WE（安装命令中符号点“.”不能少）
+pip install -e .（或者pip3，命令参数选项相同）
+cd到WE-Gym文件夹
+cd WE-Gym/
+输入安装命令，安装gym_walk
+pip install -e .（或者pip3，命令参数选项相同）
+
+终端2可以不用关，后面会用到。
+
+Step3：测试例程
+首先打开RoboViz
+示例命令：
+打开终端3，输入如下命令
+cd RoboViz/bin/linux-amd64/
+./start.sh 
+可能的问题：
+如果没有相关文件夹，请自己寻找自己的RoboViz
+如果实在找不到，那么请找到之前用U盘拷贝的robocup文件夹
+相对路径示例如下
+robocup/代理&monitor/RoboViz-master/bin/linux-amd64
+
+
+然后运行例程
+在终端2中
+先cd到文件夹下
+然后输入命令（如果是在你的chainer、WE、gym_walk等是安装在虚拟环境中的，请确保在下面的命令输入之前，虚拟环境已经激活）
+python train_ddpg.py
+
+最后，观察打开RoboViz时弹出的窗口，会有一个机器人连接到服务器，开始训练
+
+
+可能的报错：
+有关libstdc++报错。
+好像是版本的错误。
+编译的时候使用的是系统内的动态库，但是anaconda运行python脚本时调用的是它自带的动态库。
+
+解决报错：
+在/usr/lib目录及其子目录中找到系统中最新的libstdc++（比如libstdc++.so.6.0.21）,拷贝到anaconda的安装目录中的lib文件夹内（如anaconda3/lib）。
+（建议先备份）删除anaconda3/lib中的libstdc++.so.6
+右击拷贝到anaconda3/lib中最新的libstdc++，选择创建链接。将生成的链接文件重命名为libstdc++.so.6
+
+然后重新进行Step3,测试例程
+
+
+
+

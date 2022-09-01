@@ -1,0 +1,29 @@
+Step1.安装Annaconda
+清华源：https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/
+清华源选择这个下载Anaconda3-4.4.0-Linux-x86_64.sh
+（以下命令都是在ubuntu终端下运行）
+安装命令：
+bash ~/<文件目录>/Anaconda3-4.4.0-Linux-x86_64.sh
+如：bash ~/下载/Anaconda3-4.4.0-Linux-x86_64.sh（把文件拖到下载文件夹下，使用此命令）
+
+终端中一路回车，完成安装
+
+安装中有一个选择有关Add Path或者是将Anaconda的python设为默认python的选项，要选yes
+
+安装完成后，在终端输入python
+出现如下信息，说明安装成功，并且Anaconda中的python被设为默认的python。
+Python 3.6.1 |Continuum Analytics, Inc.| (default, May 11 2017, 13:09:58) 
+[GCC 4.4.7 20120313 (Red Hat 4.4.7-1)] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> 
+
+
+Step2.打开任一终端
+输入命令：pip install chainer
+自动安装chainer框架库
+
+安装完成后
+在终端中输入python
+再输入import chainer
+如果没有报错，说明chainer安装成功。
+
